@@ -1,0 +1,10 @@
+### Environments
+*venv
+*env
+
+### JetBrains
+.idea
+
+# Byte-compiled / optimized
+__pycache__/
+*.pyc
