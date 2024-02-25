@@ -7,7 +7,7 @@ servers:
 paths:
   /api/v1/movies/:
     get:
-      description: ""
+      description: "Фильмы"
       parameters:
         - name: page
           in: query
@@ -48,7 +48,7 @@ paths:
   
   /api/v1/movies/{id}:
     get:
-      description: ""
+      description: "Фильм"
       parameters:
         - in: path
           name: id  
