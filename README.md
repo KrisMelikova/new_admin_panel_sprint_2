@@ -28,7 +28,7 @@ http://127.0.0.1:80/admin
 Генерация superuser, чтобы войти в админку:
 ```
 1) docker ps
-2) docker exec -it <name of django service> bash
+2) docker exec -it <django app container id> bash
 3) cd movies_app
 4) python manage.py createsuperuser
 ```
@@ -71,5 +71,5 @@ docker run -p 8000:8000 --rm --name django django_api
 ```
 docker-compose down
 docker-compose build
-docker exec -it <name> bash
+docker exec -it <container id> bash
 ```
