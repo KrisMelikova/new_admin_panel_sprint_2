@@ -105,43 +105,10 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# this way we can see queries with logger
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': True,
-#     'filters': {
-#         'require_debug_true': {
-#             '()': 'django.utils.log.RequireDebugTrue',
-#         }
-#     },
-#     'formatters': {
-#         'default': {
-#             'format': '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]',
-#         },
-#     },
-#     'handlers': {
-#         'debug-console': {
-#             'class': 'logging.StreamHandler',
-#             'formatter': 'default',
-#             'filters': ['require_debug_true'],
-#         },
-#     },
-#     'loggers': {
-#         'django.db.backends': {
-#             'level': 'DEBUG',
-#             'handlers': ['debug-console'],
-#             'propagate': False,
-#         },
-#     },
-# }
-
 PAGINATE_BY = os.environ.get('PAGINATE_BY')
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'web/static'),
-]
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_URL = '/static/'

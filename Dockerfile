@@ -2,8 +2,11 @@ FROM python:3.10-slim
 
 WORKDIR /opt/app
 
-RUN groupadd -r docker && useradd -d /opt/app -r -G docker myuser  \
-    && chown -R myuser:myuser /opt/app && chmod 777 /opt/app -R
+ARG USERNAME=myuser
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+RUN groupadd --gid $USER_GID $USERNAME && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -20,7 +23,6 @@ RUN apt update && apt install -y gcc && pip install --upgrade pip && pip install
 
 COPY movies_app movies_app
 COPY sqlite_to_postgres sqlite_to_postgres
-COPY .env .env
 
 COPY entrypoint.sh entrypoint.sh
 RUN chmod +x entrypoint.sh
@@ -28,6 +30,5 @@ RUN chmod +x entrypoint.sh
 EXPOSE 8000
 
 USER myuser
-RUN newgrp docker
 
 ENTRYPOINT ["./entrypoint.sh"]

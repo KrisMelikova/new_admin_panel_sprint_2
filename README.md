@@ -1,4 +1,5 @@
-## API для кинотеатра (возвращает список фильмов в формате, описанном в openapi-файле, и позволяющий получить информацию об одном фильме)
+## API для кинотеатра 
+### возвращает список фильмов в формате, описанном в openapi-файле, и позволяющий получить информацию об одном фильме
 
 ____________________________________________________________________________
 Как запустить проект и проверить его работу:
@@ -18,6 +19,7 @@ docker-compose up
 ```
 http://127.0.0.1:80
 ```
+
 Админка:
 ```
 http://127.0.0.1:80/admin
@@ -29,6 +31,12 @@ docker ps
 docker exec -it new_admin_panel_sprint_2_service_1 bash
 cd movies_app
 python manage.py createsuperuser
+```
+
+Заполнение базы данными:
+```
+cd sqlite_to_postgres
+python load_data.py
 ```
 ____________________________________________________________________________
 Часть, которая будет актуальна при разработке и отладке:
@@ -43,7 +51,6 @@ pip3 install -r requirements.txt
 ```
 python manage.py runserver <port>
 
-python manage.py makemigrations
 python manage.py migrate
 
 python3 load_data.py (см. sqlite_to_postgres папку)
@@ -63,4 +70,5 @@ docker run -p 8000:8000 --rm --name django django_api
 ```
 docker-compose down
 docker-compose build
+docker exec -it <name> bash
 ```
