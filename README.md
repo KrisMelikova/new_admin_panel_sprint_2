@@ -27,16 +27,17 @@ http://127.0.0.1:80/admin
 
 Генерация superuser, чтобы войти в админку:
 ```
-docker ps
-docker exec -it new_admin_panel_sprint_2_service_1 bash
-cd movies_app
-python manage.py createsuperuser
+1) docker ps
+2) docker exec -it <name of django service> bash
+3) cd movies_app
+4) python manage.py createsuperuser
 ```
 
 Заполнение базы данными:
 ```
-cd sqlite_to_postgres
-python load_data.py
+1) Меняем в .env значение переменной DB_HOST на 'localhost' (DB_HOST='postgres')
+2) cd sqlite_to_postgres
+3) python load_data.py
 ```
 ____________________________________________________________________________
 Часть, которая будет актуальна при разработке и отладке:
