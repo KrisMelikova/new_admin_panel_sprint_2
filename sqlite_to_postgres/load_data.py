@@ -1,4 +1,5 @@
 import dataclasses
+# os используется ниже, этот импорт необходим
 import os
 import sqlite3
 from dataclasses import astuple, fields
@@ -102,7 +103,7 @@ if __name__ == "__main__":
         "port": os.environ.get("DB_PORT"),
     }
 
-    SQLITE_DB_PATH = os.environ.get("SQLITE_DB_PATH")
+    SQLITE_DB_PATH = os.environ.get("SQLITE_DB_PATH", "db.sqlite")
 
     try:
         with (sqlite_conn_context(SQLITE_DB_PATH) as sqlite_conn,
