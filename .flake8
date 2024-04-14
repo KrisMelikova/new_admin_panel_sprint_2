@@ -4,10 +4,8 @@ max-line-length = 120
 max-complexity = 10
 exclude =
     .env
-    empty_project
-    simple_project
+    venv
     load_data.py
     manage.py
     migrations
     settings.py
-    venv

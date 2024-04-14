@@ -6,6 +6,9 @@ ARG USERNAME=myuser
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
+# добаляется группа и юзер с одним и тем же названием
+# назначаем USER_UID 1000, чтобы совпадал с локальным юзером, это решает проблемы с монтированием
+# -m - create the user's home directory if it does not exist
 RUN groupadd --gid $USER_GID $USERNAME && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
 
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -22,8 +25,6 @@ COPY movies_app/uwsgi/uwsgi.ini uwsgi.ini
 RUN apt update && apt install -y gcc && pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
 
 COPY movies_app movies_app
-COPY sqlite_to_postgres sqlite_to_postgres
-
 COPY entrypoint.sh entrypoint.sh
 RUN chmod +x entrypoint.sh
 
