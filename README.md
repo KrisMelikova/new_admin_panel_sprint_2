@@ -35,7 +35,7 @@ http://127.0.0.1:80/admin
 
 Заполнение базы данными:
 ```
-1) Меняем в .env значение переменной DB_HOST на 'localhost' (DB_HOST='postgres')
+1) Меняем в .env значение переменной DB_HOST на 'localhost' (текущее значение: DB_HOST='postgres')
 2) cd sqlite_to_postgres
 3) python load_data.py
 ```
